@@ -50,71 +50,76 @@ export default function LiveActivity() {
 
   return (
     <div
-      className="fixed bottom-6 left-5 z-[9000] flex flex-col-reverse gap-2.5 pointer-events-none"
+      className="fixed bottom-6 left-5 z-[9000]"
       style={{ maxWidth: 288 }}
     >
-      {/* Close button — first in DOM = bottom of stack in flex-col-reverse */}
-      <button
-        className="pointer-events-auto self-end flex items-center gap-1 text-[10px] transition-colors px-2 py-1 rounded-lg"
-        style={{
-          color: "rgba(255,255,255,0.3)",
-          background: "rgba(8,9,20,0.65)",
-          border: "1px solid rgba(255,255,255,0.07)",
-        }}
-        onMouseEnter={e => e.currentTarget.style.color = "rgba(255,255,255,0.6)"}
-        onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.3)"}
-        onClick={close}
-      >
-        Tutup <span className="font-bold">✕</span>
-      </button>
-
-      {queue.map(n => (
-        <div
-          key={n.id}
-          className="pointer-events-auto"
+      {/* X close button — pojok kanan atas widget */}
+      <div className="flex justify-end mb-1.5">
+        <button
+          onClick={close}
+          className="pointer-events-auto flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-lg transition-all"
           style={{
-            animation: n.leaving
-              ? "notif-out 0.55s ease forwards"
-              : "notif-in 0.55s cubic-bezier(0.34,1.56,0.64,1) forwards",
+            color: "rgba(255,255,255,0.35)",
+            background: "rgba(8,9,20,0.7)",
+            border: "1px solid rgba(255,255,255,0.08)",
           }}
+          onMouseEnter={e => e.currentTarget.style.color = "rgba(255,255,255,0.7)"}
+          onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.35)"}
         >
+          Tutup <span className="font-bold ml-0.5">✕</span>
+        </button>
+      </div>
+
+      {/* Notification stack — flex-col-reverse: newest notification di bagian atas */}
+      <div className="flex flex-col-reverse gap-2.5 pointer-events-none">
+        {queue.map(n => (
           <div
-            className="flex items-center gap-3 px-4 py-3 rounded-2xl"
+            key={n.id}
+            className="pointer-events-auto"
             style={{
-              background: "rgba(8,9,20,0.94)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              border: `1px solid ${n.color}30`,
-              boxShadow: `0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04), 0 4px 16px ${n.color}18`,
+              animation: n.leaving
+                ? "notif-out 0.55s ease forwards"
+                : "notif-in 0.55s cubic-bezier(0.34,1.56,0.64,1) forwards",
             }}
           >
-            {/* Icon */}
             <div
-              className="w-9 h-9 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
-              style={{ background: `${n.color}20`, border: `1px solid ${n.color}35` }}
+              className="flex items-center gap-3 px-4 py-3 rounded-2xl"
+              style={{
+                background: "rgba(8,9,20,0.94)",
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+                border: `1px solid ${n.color}30`,
+                boxShadow: `0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04), 0 4px 16px ${n.color}18`,
+              }}
             >
-              {n.icon}
-            </div>
+              {/* Icon */}
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
+                style={{ background: `${n.color}20`, border: `1px solid ${n.color}35` }}
+              >
+                {n.icon}
+              </div>
 
-            {/* Content */}
-            <div className="flex-1 min-w-0">
-              <p className="text-white text-xs font-semibold leading-tight truncate">
-                {n.user} <span className="text-white/50 font-normal">beli</span> {n.item}
-              </p>
-              <div className="flex items-center gap-2 mt-0.5">
-                <span className="text-[10px] font-bold" style={{ color: n.color }}>{n.price}</span>
-                <span className="text-white/25 text-[10px]">•</span>
-                <span className="text-white/30 text-[10px]">baru saja</span>
+              {/* Content */}
+              <div className="flex-1 min-w-0">
+                <p className="text-white text-xs font-semibold leading-tight truncate">
+                  {n.user} <span className="text-white/50 font-normal">beli</span> {n.item}
+                </p>
+                <div className="flex items-center gap-2 mt-0.5">
+                  <span className="text-[10px] font-bold" style={{ color: n.color }}>{n.price}</span>
+                  <span className="text-white/25 text-[10px]">•</span>
+                  <span className="text-white/30 text-[10px]">baru saja</span>
+                </div>
+              </div>
+
+              {/* Live dot */}
+              <div className="flex-shrink-0">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 block animate-badge-blink" />
               </div>
             </div>
-
-            {/* Live dot */}
-            <div className="flex-shrink-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 block animate-badge-blink" />
-            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }

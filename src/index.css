@@ -14,7 +14,7 @@
   --color-card-2:  #1e1f35;
   --color-border:  #2a2b45;
   --color-muted:   #8888aa;
-  --color-text:    #f0f0ff;
+  --color-text:    #ffffff;
 
   /* Navbar */
   --nav-bg:            rgba(8,9,20,0.82);
@@ -44,7 +44,7 @@ html.light {
   --color-card-2:  #f5f5fc;
   --color-border:  #d4d4e8;
   --color-muted:   #6868a0;
-  --color-text:    #111028;
+  --color-text:    #111111;
 
   /* Navbar */
   --nav-bg:            rgba(242,242,248,0.85);

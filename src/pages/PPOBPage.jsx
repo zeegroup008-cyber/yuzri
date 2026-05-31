@@ -42,7 +42,7 @@ export default function PPOBPage() {
 
   return (
     <div className="px-4 md:px-8 lg:px-12 py-12">
-      <h1 className="font-syne font-bold text-3xl text-white mb-2">PPOB</h1>
+      <h1 className="font-syne font-bold text-3xl text-[var(--color-text)] mb-2">PPOB</h1>
       <p className="text-[#8888aa] mb-8">Pulsa, paket data, dan token listrik dengan harga terjangkau.</p>
       {loading ? (
         <div className="text-[#8888aa] text-sm">Memuat produk...</div>
@@ -66,7 +66,7 @@ export default function PPOBPage() {
                   )}
                 </div>
                 <div className="p-3" style={{ background: "#181929", borderTop: `2px solid ${colors.accent}` }}>
-                  <p className="text-white font-bold text-xs mb-0.5 truncate">{p.name}</p>
+                  <p className="text-[var(--color-text)] font-bold text-xs mb-0.5 truncate">{p.name}</p>
                   {p.minPrice && (
                     <p className="text-xs font-bold mb-2" style={{ color: "#f59e0b" }}>Mulai {fmt(p.minPrice)}</p>
                   )}
