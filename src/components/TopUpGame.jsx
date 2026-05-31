@@ -79,7 +79,7 @@ function GameCard({ game, onClick, index }) {
         className="p-3.5 transition-all duration-300"
         style={{ borderTop: `2px solid ${accent}` }}
       >
-        <p className="text-white font-bold text-xs mb-0.5 truncate">{game.name}</p>
+        <p className="text-[var(--color-text)] font-bold text-xs mb-0.5 truncate">{game.name}</p>
 
         {/* Limited stock badge */}
         {isLimited && (
@@ -154,7 +154,7 @@ export default function TopUpGame() {
                 className="w-1 h-7 rounded-full"
                 style={{ background: "linear-gradient(180deg, #7c5cfc, #5b3fd4)" }}
               />
-              <h2 className="font-syne font-extrabold text-2xl text-white tracking-tight">Top Up Game</h2>
+              <h2 className="font-syne font-extrabold text-2xl text-[var(--color-text)] tracking-tight">Top Up Game</h2>
               <span
                 className="text-[10px] font-bold px-2.5 py-0.5 rounded-full"
                 style={{ background: "rgba(124,92,252,0.2)", color: "#a78bfa", border: "1px solid rgba(124,92,252,0.3)" }}

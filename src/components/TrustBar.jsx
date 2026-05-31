@@ -46,7 +46,7 @@ export default function TrustBar() {
                   {s.icon}
                 </div>
                 <div>
-                  <div className="text-white font-extrabold text-base leading-none font-syne">{s.value}</div>
+                  <div className="text-[var(--color-text)] font-extrabold text-base leading-none font-syne">{s.value}</div>
                   <div className="text-white/40 text-xs mt-0.5">{s.label}</div>
                 </div>
               </div>

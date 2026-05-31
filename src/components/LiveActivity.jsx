@@ -16,10 +16,17 @@ const ACTIVITIES = [
 let notifIdCounter = 0
 
 export default function LiveActivity() {
+  const [hidden, setHidden] = useState(() => localStorage.getItem("liveActivityHidden") === "true")
   const [queue, setQueue] = useState([])
   const [actIdx, setActIdx] = useState(0)
 
+  const close = () => {
+    setHidden(true)
+    localStorage.setItem("liveActivityHidden", "true")
+  }
+
   const push = useCallback(() => {
+    if (hidden) return
     const act = ACTIVITIES[actIdx % ACTIVITIES.length]
     const id = ++notifIdCounter
     setQueue(prev => [...prev.slice(-2), { ...act, id, leaving: false }])
@@ -31,7 +38,7 @@ export default function LiveActivity() {
     setTimeout(() => {
       setQueue(prev => prev.filter(n => n.id !== id))
     }, 4800)
-  }, [actIdx])
+  }, [actIdx, hidden])
 
   useEffect(() => {
     const first = setTimeout(push, 2500)
@@ -39,13 +46,28 @@ export default function LiveActivity() {
     return () => { clearTimeout(first); clearInterval(interval) }
   }, [push])
 
-  if (queue.length === 0) return null
+  if (hidden || queue.length === 0) return null
 
   return (
     <div
       className="fixed bottom-6 left-5 z-[9000] flex flex-col-reverse gap-2.5 pointer-events-none"
       style={{ maxWidth: 288 }}
     >
+      {/* Close button — first in DOM = bottom of stack in flex-col-reverse */}
+      <button
+        className="pointer-events-auto self-end flex items-center gap-1 text-[10px] transition-colors px-2 py-1 rounded-lg"
+        style={{
+          color: "rgba(255,255,255,0.3)",
+          background: "rgba(8,9,20,0.65)",
+          border: "1px solid rgba(255,255,255,0.07)",
+        }}
+        onMouseEnter={e => e.currentTarget.style.color = "rgba(255,255,255,0.6)"}
+        onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.3)"}
+        onClick={close}
+      >
+        Tutup <span className="font-bold">✕</span>
+      </button>
+
       {queue.map(n => (
         <div
           key={n.id}

@@ -42,7 +42,7 @@ export default function TopUpPage() {
 
   return (
     <div className="px-4 md:px-8 lg:px-12 py-12">
-      <h1 className="font-syne font-bold text-3xl text-white mb-2">Top Up Game</h1>
+      <h1 className="font-syne font-bold text-3xl text-[var(--color-text)] mb-2">Top Up Game</h1>
       <p className="text-[#8888aa] mb-8">Pilih game favorit kamu dan top up sekarang.</p>
       {loading ? (
         <div className="text-[#8888aa] text-sm">Memuat produk...</div>
@@ -62,7 +62,7 @@ export default function TopUpPage() {
                   <div className="absolute top-2 right-2 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-white/20 text-white">HOT</div>
                 </div>
                 <div className="p-3" style={{background:"#181929",borderTop:`2px solid ${colors.accent}`}}>
-                  <p className="text-white font-bold text-xs mb-0.5 truncate">{game.name}</p>
+                  <p className="text-[var(--color-text)] font-bold text-xs mb-0.5 truncate">{game.name}</p>
                   {game.minPrice && (
                     <p className="text-xs font-bold mb-2" style={{color:"#f59e0b"}}>Mulai {fmt(game.minPrice)}</p>
                   )}

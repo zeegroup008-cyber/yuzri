@@ -88,7 +88,7 @@ function PremiumCard({ product: p, onClick, index }) {
 
       {/* Info */}
       <div className="p-3.5" style={{ borderTop: `2px solid ${accent}` }}>
-        <p className="text-white font-bold text-xs mb-0.5 truncate">{p.name}</p>
+        <p className="text-[var(--color-text)] font-bold text-xs mb-0.5 truncate">{p.name}</p>
 
         {isLtd && (
           <span
@@ -181,7 +181,7 @@ export default function ProdukPremium() {
                 className="w-1 h-7 rounded-full"
                 style={{ background: "linear-gradient(180deg, #c4b5fd, #7c5cfc)" }}
               />
-              <h2 className="font-syne font-extrabold text-2xl text-white tracking-tight">Akun & Langganan</h2>
+              <h2 className="font-syne font-extrabold text-2xl text-[var(--color-text)] tracking-tight">Akun & Langganan</h2>
               <span
                 className="text-[10px] font-bold px-2.5 py-0.5 rounded-full"
                 style={{ background: "rgba(124,92,252,0.2)", color: "#a78bfa", border: "1px solid rgba(124,92,252,0.3)" }}

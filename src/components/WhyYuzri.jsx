@@ -52,7 +52,7 @@ export default function WhyYuzri() {
             style={{background:"rgba(124,92,252,0.1)",border:"1px solid rgba(124,92,252,0.25)",color:"#a78bfa"}}>
             ✨ Kenapa Ribuan Orang Pilih YuzriID
           </div>
-          <h2 className="font-syne font-extrabold mb-4" style={{fontSize:"clamp(1.8rem,3.5vw,2.8rem)",color:"white"}}>
+          <h2 className="font-syne font-extrabold mb-4 text-[var(--color-text)]" style={{fontSize:"clamp(1.8rem,3.5vw,2.8rem)"}}>
             Bukan Sekadar Platform<br />
             <span style={{background:"linear-gradient(135deg,#c4b5fd,#7c5cfc)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>
               Top Up Biasa
@@ -84,8 +84,8 @@ export default function WhyYuzri() {
                 </span>
               </div>
 
-              <h3 className="font-bold text-sm text-white mb-2">{f.title}</h3>
-              <p className="text-xs leading-relaxed mb-4" style={{color:"rgba(255,255,255,0.4)"}}>{f.desc}</p>
+              <h3 className="font-bold text-sm text-[var(--color-text)] mb-2">{f.title}</h3>
+              <p className="text-xs leading-relaxed mb-4 text-white/40">{f.desc}</p>
 
               {/* Stat chip */}
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold"
@@ -101,7 +101,7 @@ export default function WhyYuzri() {
         <div className="mt-12 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6"
           style={{background:"linear-gradient(135deg,rgba(124,92,252,0.12),rgba(124,92,252,0.06))",border:"1px solid rgba(124,92,252,0.2)"}}>
           <div>
-            <h3 className="font-syne font-bold text-xl text-white mb-1">Siap memulai?</h3>
+            <h3 className="font-syne font-bold text-xl text-[var(--color-text)] mb-1">Siap memulai?</h3>
             <p className="text-white/40 text-sm">Bergabung dengan 500K+ pengguna aktif di seluruh Indonesia</p>
           </div>
           <div className="flex gap-3">

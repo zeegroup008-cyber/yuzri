@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+﻿import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import pb from "../lib/pb"
 import { getImageUrl } from "../lib/products"
@@ -23,7 +23,7 @@ function fmt(n) { return "Rp " + Number(n).toLocaleString("id-ID") }
 export default function Hero() {
   const navigate = useNavigate()
 
-  /* ── state ── */
+  /* â”€â”€ state â”€â”€ */
   const [products,      setProducts]      = useState([])
   const [current,       setCurrent]       = useState(0)
   const [liveText,      setLiveText]      = useState(0)
@@ -41,20 +41,20 @@ export default function Hero() {
     { user: "Rini",   action: "beli",   item: "ChatGPT Plus" },
   ]
 
-  /* ── live ticker ── */
+  /* â”€â”€ live ticker â”€â”€ */
   useEffect(() => {
     const t = setInterval(() => setLiveText(p => (p + 1) % liveActivities.length), 4000)
     return () => clearInterval(t)
   }, [])
 
-  /* ── load banners ── */
+  /* â”€â”€ load banners â”€â”€ */
   useEffect(() => {
     pb.collection("banners").getFullList({
       filter: "is_active = true", sort: "sort_order", requestKey: null,
     }).then(data => { if (data.length > 0) setBanners(data) }).catch(() => {})
   }, [])
 
-  /* ── auto-rotate banner promo ── */
+  /* â”€â”€ auto-rotate banner promo â”€â”€ */
   useEffect(() => {
     if (banners.length < 2) return
     const t = setInterval(() => {
@@ -64,7 +64,7 @@ export default function Hero() {
     return () => clearInterval(t)
   }, [banners])
 
-  /* ── load products ── */
+  /* â”€â”€ load products â”€â”€ */
   useEffect(() => {
     const load = async () => {
       try {
@@ -86,7 +86,7 @@ export default function Hero() {
     load()
   }, [])
 
-  /* ── auto-slide products ── */
+  /* â”€â”€ auto-slide products â”€â”€ */
   useEffect(() => {
     if (products.length === 0) return
     const t = setInterval(() => {
@@ -107,10 +107,10 @@ export default function Hero() {
       className="relative overflow-hidden noise-overlay"
       style={{ minHeight: "calc(100vh - 64px)", display: "flex", alignItems: "center" }}
     >
-      {/* ── Background ── */}
+      {/* â”€â”€ Background â”€â”€ */}
       <div className="absolute inset-0" style={{ background: "var(--color-bg)" }} />
 
-      {/* Primary glow — follows accent color of active product */}
+      {/* Primary glow â€” follows accent color of active product */}
       <div
         className="absolute pointer-events-none transition-all"
         style={{
@@ -121,7 +121,7 @@ export default function Hero() {
           transition: "background 1.2s ease",
         }}
       />
-      {/* Purple base glow — always present */}
+      {/* Purple base glow â€” always present */}
       <div
         className="absolute pointer-events-none animate-radial-breathe"
         style={{
@@ -149,10 +149,10 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Content ── */}
+      {/* â”€â”€ Content â”€â”€ */}
       <div className="relative z-10 w-full px-4 md:px-8 lg:px-12 py-10 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
 
-        {/* ════ LEFT ════ */}
+        {/* â•â•â•â• LEFT â•â•â•â• */}
         <div>
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-8 animate-fade-in-up glass-purple">
@@ -165,7 +165,7 @@ export default function Hero() {
             className="font-syne font-extrabold leading-[1.05] tracking-tight mb-6 animate-fade-in-up delay-100"
             style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
           >
-            <span className="block text-white">Top Up Game &</span>
+            <span className="block text-[var(--color-text)]">Top Up Game &</span>
             <span
               className="block animate-gradient-flow"
               style={{
@@ -181,14 +181,14 @@ export default function Hero() {
               className="block text-white/55 font-semibold mt-2"
               style={{ fontSize: "clamp(0.85rem, 1.8vw, 1.15rem)", letterSpacing: "0.07em" }}
             >
-              INSTAN · TERMURAH · 100% AMAN
+              INSTAN Â· TERMURAH Â· 100% AMAN
             </span>
           </h1>
 
           {/* Description */}
           <p
             className="text-white/48 leading-relaxed mb-10 max-w-[420px] animate-fade-in-up delay-200"
-            style={{ fontSize: "1rem", color: "rgba(255,255,255,0.48)" }}
+            style={{ fontSize: "1rem" }}
           >
             Top up favoritmu dalam hitungan menit. Harga selalu terbaik, sistem otomatis 24/7, setiap transaksi terjamin aman.
           </p>
@@ -200,7 +200,7 @@ export default function Hero() {
               className="animate-pulse-glow flex items-center gap-2.5 text-white font-bold px-8 py-4 rounded-2xl text-sm transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]"
               style={{ background: "linear-gradient(135deg, #7c5cfc, #5b3fd4)" }}
             >
-              ⚡ Top Up Sekarang
+              âš¡ Top Up Sekarang
             </button>
             <button
               onClick={() => navigate("/premium")}
@@ -208,7 +208,7 @@ export default function Hero() {
               style={{ border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.7)" }}
             >
               Lihat Premium
-              <span className="group-hover:translate-x-1 transition-transform duration-200 inline-block">→</span>
+              <span className="group-hover:translate-x-1 transition-transform duration-200 inline-block">â†’</span>
             </button>
           </div>
 
@@ -226,10 +226,10 @@ export default function Hero() {
               ))}
             </div>
             <div>
-              <div className="text-white font-semibold text-sm">500K+ Pengguna Aktif</div>
+              <div className="text-[var(--color-text)] font-semibold text-sm">500K+ Pengguna Aktif</div>
               <div className="flex items-center gap-1">
                 <div className="flex gap-0.5">
-                  {[1,2,3,4,5].map(i => <span key={i} style={{ color: "#fbbf24", fontSize: "0.7rem" }}>★</span>)}
+                  {[1,2,3,4,5].map(i => <span key={i} style={{ color: "#fbbf24", fontSize: "0.7rem" }}>â˜…</span>)}
                 </div>
                 <span className="text-white/35 text-xs">4.9 (2.500+ ulasan)</span>
               </div>
@@ -245,7 +245,7 @@ export default function Hero() {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-badge-blink" />
               <span className="text-emerald-400 text-[10px] font-bold tracking-widest">LIVE</span>
             </div>
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
+            <p className="text-xs text-white/50">
               <span className="text-white/80 font-semibold">{liveActivities[liveText].user}</span>
               {" "}baru saja {liveActivities[liveText].action}{" "}
               <span className="text-white/70 font-medium">{liveActivities[liveText].item}</span>
@@ -253,14 +253,14 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* ════ RIGHT — Banner Promo + Product Carousel ════ */}
+        {/* â•â•â•â• RIGHT â€” Banner Promo + Product Carousel â•â•â•â• */}
         <div className="flex flex-col gap-3 animate-fade-in-up delay-200">
 
-          {/* 1 ── Banner Promo iklan (fade in/out, auto-rotate) */}
+          {/* 1 â”€â”€ Banner Promo iklan (fade in/out, auto-rotate) */}
           <div
-            className="relative rounded-2xl overflow-hidden cursor-pointer shine-card h-48"
+            className="relative rounded-2xl overflow-hidden cursor-pointer shine-card h-64"
             style={{
-              minHeight: 192,
+              minHeight: 280,
               background: banner?.bg_color || "linear-gradient(135deg,#f59e0b,#ef4444,#ec4899)",
               boxShadow: "0 12px 40px rgba(0,0,0,0.45)",
               opacity: bannerVisible ? 1 : 0,
@@ -288,7 +288,7 @@ export default function Hero() {
                   className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full text-white animate-badge-blink"
                   style={{ background: "rgba(0,0,0,0.35)", backdropFilter: "blur(6px)", border: "1px solid rgba(255,255,255,0.2)" }}
                 >
-                  🔥 PROMO
+                  ðŸ”¥ PROMO
                 </span>
                 <span className="text-[10px] text-white/65 font-medium">{banner?.subtitle || "Hari Ini Saja!"}</span>
               </div>
@@ -315,7 +315,7 @@ export default function Hero() {
             )}
           </div>
 
-          {/* 2 ── Active Product Card (big) */}
+          {/* 2 â”€â”€ Active Product Card (big) */}
           {activeProd && (
             <div
               onClick={() => navigate(`/${activeProd.type === "game" ? "topup" : "premium"}/${activeProd.category}`)}
@@ -350,7 +350,7 @@ export default function Hero() {
                   className="inline-flex items-center gap-1.5 text-xs font-extrabold px-3 py-1.5 rounded-full mb-3 text-white"
                   style={{ background: accentColor, boxShadow: `0 4px 14px ${accentColor}55` }}
                 >
-                  {activeProd.type === "game" ? "🎮 TOP UP" : "💎 PREMIUM"}
+                  {activeProd.type === "game" ? "ðŸŽ® TOP UP" : "ðŸ’Ž PREMIUM"}
                 </span>
                 <h3 className="font-syne font-extrabold text-white text-2xl leading-tight mb-1">{activeProd.name}</h3>
                 {activeProd.description && (
@@ -365,7 +365,7 @@ export default function Hero() {
             </div>
           )}
 
-          {/* 3 ── Next Product Preview (small) */}
+          {/* 3 â”€â”€ Next Product Preview (small) */}
           {nextProd && (
             <div
               onClick={() => navigate(`/${nextProd.type === "game" ? "topup" : "premium"}/${nextProd.category}`)}
@@ -396,7 +396,7 @@ export default function Hero() {
                   className="inline-block text-[10px] font-extrabold px-2.5 py-1 rounded-full mb-1.5 text-white"
                   style={{ background: nextColor }}
                 >
-                  {nextProd.type === "game" ? "🎮" : "💎"} SELANJUTNYA
+                  {nextProd.type === "game" ? "ðŸŽ®" : "ðŸ’Ž"} SELANJUTNYA
                 </span>
                 <h3 className="font-syne font-extrabold text-white text-base leading-tight">{nextProd.name}</h3>
                 {nextProd.minPrice && (
@@ -408,7 +408,7 @@ export default function Hero() {
             </div>
           )}
 
-          {/* 4 ── Live activity ticker */}
+          {/* 4 â”€â”€ Live activity ticker */}
           <div
             className="flex items-center gap-3 px-4 py-2.5 rounded-xl"
             style={{ background: "rgba(16,185,129,0.06)", border: "1px solid rgba(16,185,129,0.18)" }}
@@ -424,7 +424,7 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* 5 ── Carousel dots */}
+          {/* 5 â”€â”€ Carousel dots */}
           {products.length > 1 && (
             <div className="flex gap-1.5 justify-center pt-0.5">
               {products.map((_, i) => (
@@ -448,3 +448,6 @@ export default function Hero() {
     </section>
   )
 }
+
+
+

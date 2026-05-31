@@ -124,7 +124,7 @@ function ReviewCard({ r, index }) {
       </div>
 
       {/* Review text */}
-      <p className="text-sm leading-relaxed flex-1 relative z-10" style={{ color: "rgba(255,255,255,0.72)" }}>
+      <p className="text-sm leading-relaxed flex-1 relative z-10 text-white/70">
         "{r.text}"
       </p>
 
@@ -145,7 +145,7 @@ function ReviewCard({ r, index }) {
           <Avatar initials={r.initials} color={r.color} size={40} />
           <div>
             <div className="flex items-center gap-1.5">
-              <p className="text-white text-sm font-semibold leading-none">{r.name}</p>
+              <p className="text-[var(--color-text)] text-sm font-semibold leading-none">{r.name}</p>
               {r.verified && (
                 <span
                   className="flex items-center gap-0.5 text-[9px] font-bold px-1.5 py-0.5 rounded-full"
@@ -206,7 +206,7 @@ export default function Testimonials() {
             ⭐ Dipercaya Ribuan Pelanggan
           </div>
           <h2
-            className="font-syne font-extrabold text-white mb-3"
+            className="font-syne font-extrabold text-[var(--color-text)] mb-3"
             style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)" }}
           >
             Kata Mereka Tentang YuzriID
@@ -235,7 +235,7 @@ export default function Testimonials() {
                 Rating Keseluruhan
               </div>
               <div
-                className="font-syne font-extrabold text-white mb-1 animate-count-pulse"
+                className="font-syne font-extrabold text-[var(--color-text)] mb-1 animate-count-pulse"
                 style={{ fontSize: "3.8rem", lineHeight: 1 }}
               >
                 4.9
